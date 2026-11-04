@@ -78,7 +78,15 @@ Core monitoring, database storage, dashboard visualization and authenticated MQT
 
 Automatic startup using systemd and deployment documentation are still in progress.
 
+\## Architecture
 
+
+
+The following diagram illustrates the system architecture:
+
+
+
+\[View the system architecture](docs/architecture.md)
 
 \## Author
 
