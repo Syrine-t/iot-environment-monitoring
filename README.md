@@ -1,96 +1,69 @@
 # IoT Environmental Monitoring System
 
+## Description
 
+This project is an IoT-based environmental monitoring system developed using a Raspberry Pi 5 and a BME280 sensor.
 
-## Project Overview
-
-
-
-This project consists of an IoT-based environmental monitoring system designed to collect, store, transmit and visualize environmental data using a Raspberry Pi 5.
-
-
-
-The system measures temperature, humidity and atmospheric pressure using a BME280 sensor.
-
-
-
-## Hardware
-
-
-
-- Raspberry Pi 5
-
-- BME280 environmental sensor
-
-
-
-## Technologies
-
-
-
-- \*\*Python:\*\* Sensor data acquisition and processing
-
-- \*\*I²C:\*\* Communication between the Raspberry Pi and the BME280 sensor
-
-- \*\*SQLite:\*\* Storage of environmental measurements
-
-- \*\*Flask:\*\* Development of the web dashboard
-
-- \*\*HTML / CSS / JavaScript:\*\* Dashboard interface and data visualization
-
-- \*\*MQTT / Mosquitto:\*\* Real-time data communication with authentication
-
-- \*\*Linux:\*\* Raspberry Pi operating system
-
-
-
-## System Architecture
-
-
-
-BME280 Sensor → Raspberry Pi 5 → Python Application → SQLite Database / MQTT Broker → Flask Dashboard
-
-
+It collects temperature, humidity and atmospheric pressure data, stores measurements in an SQLite database, and provides a web dashboard for real-time monitoring and historical visualization.
 
 ## Features
 
+- Environmental data acquisition using a BME280 sensor.
+- I2C communication with Raspberry Pi 5.
+- Data storage using SQLite.
+- Web dashboard developed with Flask, HTML, CSS and JavaScript.
+- Historical data visualization using charts.
+- Temperature threshold alerts.
+- MQTT communication using Mosquitto with authentication.
+- Automatic startup using Linux systemd services.
 
+## Technologies
 
-- Real-time acquisition of temperature, humidity and pressure.
-
-- Storage of measurements in an SQLite database.
-
-- Web dashboard for monitoring environmental data.
-
-- Graphical visualization of measurements.
-
-- MQTT communication with username/password authentication.
-
-
-
-## Project Status
-
-
-
-Core monitoring, database storage, dashboard visualization and authenticated MQTT communication have been implemented and tested.
-
-
-
-Automatic startup using systemd and deployment documentation are still in progress.
+- Hardware: Raspberry Pi 5, BME280
+- Programming: Python
+- Database: SQLite
+- Web: Flask, HTML, CSS, JavaScript
+- Communication: MQTT, Mosquitto
+- Operating System: Linux
+- Version Control: Git, GitHub
 
 ## Architecture
 
+See [System Architecture](docs/architecture.md).
 
+## Project Structure
 
-The following diagram illustrates the system architecture:
+```text
+iot-environment-monitoring/
+├── monitoring.py
+├── app.py
+├── database.py
+├── requirements.txt
+├── templates/
+├── static/
+├── docs/
+├── screenshots/
+├── .gitignore
+└── README.md
+```
 
+## Installation
 
+1. Clone the repository.
+2. Install the required Python dependencies.
+3. Enable I2C on the Raspberry Pi.
+4. Configure the Mosquitto MQTT broker and authentication.
+5. Configure the MQTT environment variables.
+6. Initialize the database.
+7. Configure the systemd services.
 
-[View the system architecture](docs/architecture.md)
+See the deployment documentation for detailed instructions.
+
+## Project Status
+
+Core monitoring, database storage, dashboard visualization, authenticated MQTT communication and automatic startup using systemd have been implemented and tested.
 
 ## Author
 
-
-
-TIC Undergraduate Student
+Developed as a personal IoT project.
 
