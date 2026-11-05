@@ -1,8 +1,8 @@
-\# IoT Environmental Monitoring System
+# IoT Environmental Monitoring System
 
 
 
-\## Project Overview
+## Project Overview
 
 
 
@@ -14,37 +14,37 @@ The system measures temperature, humidity and atmospheric pressure using a BME28
 
 
 
-\## Hardware
+## Hardware
 
 
 
-\- Raspberry Pi 5
+- Raspberry Pi 5
 
-\- BME280 environmental sensor
-
-
-
-\## Technologies
+- BME280 environmental sensor
 
 
 
-\- \*\*Python:\*\* Sensor data acquisition and processing
-
-\- \*\*I²C:\*\* Communication between the Raspberry Pi and the BME280 sensor
-
-\- \*\*SQLite:\*\* Storage of environmental measurements
-
-\- \*\*Flask:\*\* Development of the web dashboard
-
-\- \*\*HTML / CSS / JavaScript:\*\* Dashboard interface and data visualization
-
-\- \*\*MQTT / Mosquitto:\*\* Real-time data communication with authentication
-
-\- \*\*Linux:\*\* Raspberry Pi operating system
+## Technologies
 
 
 
-\## System Architecture
+- \*\*Python:\*\* Sensor data acquisition and processing
+
+- \*\*I²C:\*\* Communication between the Raspberry Pi and the BME280 sensor
+
+- \*\*SQLite:\*\* Storage of environmental measurements
+
+- \*\*Flask:\*\* Development of the web dashboard
+
+- \*\*HTML / CSS / JavaScript:\*\* Dashboard interface and data visualization
+
+- \*\*MQTT / Mosquitto:\*\* Real-time data communication with authentication
+
+- \*\*Linux:\*\* Raspberry Pi operating system
+
+
+
+## System Architecture
 
 
 
@@ -52,23 +52,23 @@ BME280 Sensor → Raspberry Pi 5 → Python Application → SQLite Database / MQ
 
 
 
-\## Features
+## Features
 
 
 
-\- Real-time acquisition of temperature, humidity and pressure.
+- Real-time acquisition of temperature, humidity and pressure.
 
-\- Storage of measurements in an SQLite database.
+- Storage of measurements in an SQLite database.
 
-\- Web dashboard for monitoring environmental data.
+- Web dashboard for monitoring environmental data.
 
-\- Graphical visualization of measurements.
+- Graphical visualization of measurements.
 
-\- MQTT communication with username/password authentication.
+- MQTT communication with username/password authentication.
 
 
 
-\## Project Status
+## Project Status
 
 
 
@@ -78,7 +78,7 @@ Core monitoring, database storage, dashboard visualization and authenticated MQT
 
 Automatic startup using systemd and deployment documentation are still in progress.
 
-\## Architecture
+## Architecture
 
 
 
@@ -86,9 +86,9 @@ The following diagram illustrates the system architecture:
 
 
 
-\[View the system architecture](docs/architecture.md)
+[View the system architecture](docs/architecture.md)
 
-\## Author
+## Author
 
 
 
