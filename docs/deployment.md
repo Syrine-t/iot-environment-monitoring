@@ -22,15 +22,15 @@
 
 | BME280 | Raspberry Pi 5 |
 
-|---|---|
+      ---|---
 
-| VIN | 3.3V (Pin 1) |
+   | VIN | 3.3V (Pin 1) |
 
-| GND | GND (Pin 6) |
+   | GND | GND (Pin 6) |
 
-| SDA | GPIO2 (Pin 3) |
+   | SDA | GPIO2 (Pin 3) |
 
-| SCL | GPIO3 (Pin 5) |
+   | SCL | GPIO3 (Pin 5) |
 
 
 
