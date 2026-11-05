@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> IoT Monitoring</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+	<h1> IoT Environmental Monitoring </h1>
+	<div class="container">
+		<div class="card">
+			<h2> Température</h2>
+			<p class="value">
+				{{"%.2f"|format(mesure[2])}} °C </p>
+		</div>
+		<div class="card">
+			<h2> Humidité</h2>
+			<p class="value">
+				{{"%.2f"|format(mesure[3])}} %
+			</p>
+		</div>
+		<div class="card">
+                        <h2> Pression</h2>
+                        <p class="value">
+				{{"%.2f"|format(mesure[4])}} hPa
+			</p>
+		</div>
+		<p>
+			Dernière mesure:
+			{{mesure[1]}}
+		</p>
+		<div class="graph">
+			<h2> Evolution de la température </h2>
+			<canvas id="temperatureChart"></canvas>
+		</div>
+ 		<div class="graph">
+                        <h2> Evolution de l'humidité </h2>
+                        <canvas id="humidityChart"></canvas>
+                </div>
+		<div class="graph">
+                        <h2> Evolution de la pression </h2>
+                        <canvas id="pressureChart"></canvas>
+                </div>
+	</div>
+	<p> Nombre de mesures :{{ historique|length}}</p>
+	<script>
+		const historique = {{ historique | tojson }};
+        	const dates = historique.map( mesure => mesure[0]
+        	);
+        	const temperatures = historique.map(mesure => mesure[1]
+        	);
+        	const humidites = historique.map(mesure => mesure[2]
+        	);
+        	const pressions = historique.map(mesure => mesure[3]
+        	);
+        // GRAPHIQUE
+
+        	const temperatureCanvas =
+            		document.getElementById("temperatureChart");
+        	new Chart(temperatureCanvas, {
+            		type: "line",
+            		data: {
+                		labels: dates,
+                		datasets: [{
+                    			label: "Température (°C)",
+					data: temperatures,
+                    			tension: 0.3
+		                }]
+			}
+		});
+
+        	const humidityCanvas =
+            		document.getElementById("humidityChart");
+        	new Chart(humidityCanvas, {
+            		type: "line",
+            		data: {
+                		labels: dates,
+                		datasets: [{
+                    			label: "Humidité (%)",
+                    			data: humidites,
+                    			tension: 0.3
+                		}]
+
+            		}
+
+        	});
+
+	        const pressureCanvas =
+        	    document.getElementById("pressureChart");
+        	new Chart(pressureCanvas, {
+            		type: "line",
+            		data: {
+                		labels: dates,
+				datasets: [{
+                    			label: "Pression (hPa)",
+                    			data: pressions,
+                    			tension: 0.3
+
+                		}]
+
+            		}
+
+        	});
+</script>
+</body>
+</html>
