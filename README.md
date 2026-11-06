@@ -4,7 +4,9 @@
 
 This project is an IoT-based environmental monitoring system developed using a Raspberry Pi 5 and a BME280 sensor.
 
-It collects temperature, humidity and atmospheric pressure data, stores measurements in an SQLite database, and provides a web dashboard for real-time monitoring and historical visualization.
+It collects temperature, humidity and atmospheric pressure data, stores measurements in an SQLite database, and publishes sensor data through an authenticated MQTT connection.
+
+A Flask web dashboard provides access to environmental measurements and historical data visualization..
 
 ## Features
 
@@ -57,7 +59,8 @@ iot-environment-monitoring/
 6. Initialize the database.
 7. Configure the systemd services.
 
-See the deployment documentation for detailed instructions.
+For detailed installation and configuration instructions,
+see the [Deployment Guide](docs/deployment.md).
 
 ## Project Status
 
@@ -91,7 +94,16 @@ The monitoring script and web dashboard are configured as Linux systemd services
 ## Security
 
 MQTT credentials are stored in environment variables and are not included in the Git repository.
+## Key Skills Demonstrated
 
+- Embedded Linux and Raspberry Pi configuration.
+- Python programming and sensor data acquisition.
+- I2C communication protocol.
+- MQTT communication and authentication.
+- SQL database management.
+- Web development with Flask.
+- Linux service management using systemd.
+- Git and GitHub version control.
 ## Author
 
 Developed as a personal IoT project.
