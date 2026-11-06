@@ -1,40 +1,40 @@
-\# Deployment Guide
+# Deployment Guide
 
 
 
-\## 1. Hardware Requirements
+## 1. Hardware Requirements
 
 
 
-\- Raspberry Pi 5
+- Raspberry Pi 5
 
-\- BME280 environmental sensor
+- BME280 environmental sensor
 
-\- Jumper wires
+- Jumper wires
 
-\- Stable power supply
+- Stable power supply
 
 
 
-\## 2. Sensor Wiring
+## 2. Sensor Wiring
 
 
 
 | BME280 | Raspberry Pi 5 |
 
-|---|---|
+------|------
 
-| VIN | 3.3V (Pin 1) |
+   | VIN | 3.3V (Pin 1) |
 
-| GND | GND (Pin 6) |
+   | GND | GND (Pin 6) |
 
-| SDA | GPIO2 (Pin 3) |
+   | SDA | GPIO2 (Pin 3) |
 
-| SCL | GPIO3 (Pin 5) |
+   | SCL | GPIO3 (Pin 5) |
 
 
 
-\## 3. Enable I2C
+## 3. Enable I2C
 
 
 
@@ -70,7 +70,7 @@ The BME280 should appear at address `0x76`.
 
 
 
-\## 4. Install Python Dependencies
+## 4. Install Python Dependencies
 
 
 
@@ -104,7 +104,7 @@ pip install -r requirements.txt
 
 
 
-\## 5. Configure MQTT
+## 5. Configure MQTT
 
 
 
@@ -128,7 +128,7 @@ Store MQTT credentials in a protected environment file. Never publish real crede
 
 
 
-\## 6. Initialize the Database
+## 6. Initialize the Database
 
 
 
@@ -144,7 +144,7 @@ This creates the SQLite database tables.
 
 
 
-\## 7. Run the Application
+## 7. Run the Application
 
 
 
@@ -184,7 +184,7 @@ http://RASPBERRY\_PI\_IP:5000
 
 
 
-\## 8. Automatic Startup
+## 8. Automatic Startup
 
 
 
@@ -192,9 +192,9 @@ The project uses two systemd services:
 
 
 
-\- `iot-monitoring.service`
+- `iot-monitoring.service`
 
-\- `iot-dashboard.service`
+- `iot-dashboard.service`
 
 
 
