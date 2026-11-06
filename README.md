@@ -62,6 +62,35 @@ See the deployment documentation for detailed instructions.
 ## Project Status
 
 Core monitoring, database storage, dashboard visualization, authenticated MQTT communication and automatic startup using systemd have been implemented and tested.
+## Dashboard Preview
+
+The web dashboard displays real-time environmental measurements and historical charts.
+
+![IoT Dashboard](screenshots/dashboard1.png)
+![IoT Dashboard](screenshots/dashboard2.png)
+![IoT Dashboard](screenshots/dashboard3.png)
+![IoT Dashboard](screenshots/dashboard4.png)
+
+## MQTT Communication
+
+The system publishes environmental measurements through authenticated MQTT communication.
+
+![MQTT Communication](screenshots/mqtt.png)
+
+## System Services
+
+The monitoring script and web dashboard are configured as Linux systemd services for automatic startup.
+
+![Systemd Services](screenshots/services.png)
+
+## Documentation
+
+- [System Architecture](docs/architecture.md)
+- [Deployment Guide](docs/deployment.md)
+
+## Security
+
+MQTT credentials are stored in environment variables and are not included in the Git repository.
 
 ## Author
 
