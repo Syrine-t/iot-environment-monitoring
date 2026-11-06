@@ -6,20 +6,46 @@ import busio
 import time
 import adafruit_bme280.basic as adafruit_bme280
 import paho.mqtt.client as mqtt
+#initialisation de la communication I2C
 i2c = busio.I2C(board.SCL, board.SDA)
-sensor = adafruit_bme280.Adafruit_BME280_I2C(i2c, address=0x76)
+#fonction pour detecter le capteur
+def detecter_capteur():
+	while True:
+		try:
+			capteur = adafruit_bme280.Adafruit_BME280_I2C(i2c, address=0x76)
+			print("Capteur BME280 detecté")
+			return capteur
+		except (ValueError,OSError) as erreur:
+			print(f"Capteur non detecté :{erreur}")
+			print("Nouvelle tentative dans 5secondes")
+			time.sleep(5)
+#Detection initiale du capteur
+sensor =detecter_capteur()
+#Connexion a la base de données SQLite
 connexion =sqlite3.connect("environment.db")
 curseur=connexion.cursor()
+#config MQTT
 client =mqtt.Client()
 client.username_pw_set(
 	os.environ["MQTT_USERNAME"],
 	os.environ["MQTT_PASSWORD"]
 )
 client.connect("localhost",1883,60)
+#boucle de surveillance
 while True:
-	temp=sensor.temperature
-	humidite=sensor.humidity
-	pression=sensor.pressure
+	try:
+		temp=sensor.temperature
+		humidite=sensor.humidity
+		pression=sensor.pressure
+	except OSError as erreur:
+		print(f"Erreur de lecture du capteur: {erreur}")
+		print("Nouvelle tentative dans 5secondes")
+		time.sleep(5)
+		sensor=detecter_capteur()
+#on recommence la boucle sans enregister les mesures	
+		continue
+	
+
 	date_heure= datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 	curseur.execute("""
 	INSERT INTO mesures
@@ -27,6 +53,7 @@ while True:
 	VALUES(?,?,?,?)
 	""", (date_heure, temp , humidite , pression))
 	connexion.commit()
+#publication des mesures par MQTT
 	client.publish("iot/temperature", f"{temp:.2f}")
 	client.publish("iot/humidite", f"{humidite:.2f}")
 	client.publish("iot/pression", f"{pression:.2f}")
