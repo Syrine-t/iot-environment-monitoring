@@ -32,6 +32,7 @@ client.username_pw_set(
 )
 client.connect("localhost",1883,60)
 #boucle de surveillance
+alerte_active=False
 while True:
 	try:
 		temp=sensor.temperature
@@ -63,7 +64,7 @@ while True:
 		f"Pression: {pression:.2f} hpa |"
 		f"Humidité: {humidite:.2f} % |"
 	)
-	if temp>27:
+	if temp>27 and not alerte_active:
 		message="La temperature est superieur a 27°C"
 		print(message)
 		curseur.execute("""
@@ -71,6 +72,9 @@ while True:
 			VALUES(?,?)
 		""",(date_heure,message))
 		connexion.commit()
+		alerte_active=True
+	elif temp<= 27:
+		alerte_active=False
 	time.sleep(10)
 
 
